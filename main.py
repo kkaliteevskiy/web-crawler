@@ -32,7 +32,8 @@ def get_100_url(url = str('https://news.ycombinator.com')):
             if href.endswith('/'):#format all links to be the same (remove extra '/ at the end)
                 href = href[0:-1]
 
-            if href.startswith('https') and not (href in valid_links): # check link validity and check if it is not already in the list
+            scheme = href.split(':')[0] #check scheme
+            if scheme in ['http', 'https']:
                 valid_links.append(href)
 
             if len(valid_links) == 100: # stop when the list has 100 elements
